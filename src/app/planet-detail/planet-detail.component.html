@@ -1,0 +1,29 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/planets']"><mat-icon>list</mat-icon></a>
+  </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title><h2>{{planet.name}}</h2></mat-card-title>
+      <mat-card-subtitle>{{planet.description}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <dl>
+        <dt>Register : {{planet.dateRegister | date}}</dt>
+      </dl>
+    </mat-card-content>
+    <mat-card-content>
+      <dl>
+        <dt>Status : {{planet.status}}</dt>
+      </dl>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-flat-button color="primary" [routerLink]="['/planet-edit', planet.id]"><mat-icon>edit</mat-icon></a>
+      <a mat-flat-button color="warn" (click)="deletePlanet(planet.id)"><mat-icon>delete</mat-icon></a>
+    </mat-card-actions>
+  </mat-card>
+</div>

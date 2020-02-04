@@ -1,0 +1,23 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/planet-add']"><mat-icon>add</mat-icon></a>
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="data" class="example-table"
+           matSort matSortActive="prod_name" matSortDisableClear matSortDirection="asc">
+
+      <!-- Planet Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Planet Name</th>
+        <td mat-cell *matCellDef="let row">{{row.name}}</td>
+      </ng-container>
+
+     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/planet-details/', row.id]"></tr>
+    </table>
+  </div>
+</div>
